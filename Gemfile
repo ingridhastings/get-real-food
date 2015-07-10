@@ -16,6 +16,7 @@ gem 'therubyracer'
 gem 'less-rails' 
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug'
