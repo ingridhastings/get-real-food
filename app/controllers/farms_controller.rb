@@ -1,4 +1,5 @@
 class FarmsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_farm, only: [:show, :edit, :update, :destroy]
 
   # GET /farms
@@ -24,7 +25,7 @@ class FarmsController < ApplicationController
   # POST /farms
   # POST /farms.json
   def create
-    @farm = Farm.new(farm_params)
+    @farm = current_user.farms.new(farm_params)
 
     respond_to do |format|
       if @farm.save
@@ -69,6 +70,6 @@ class FarmsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def farm_params
-      params.require(:farm).permit(:name, :address, :description, :phone, :website, :user_id)
+      params.require(:farm).permit(:name, :address, :description, :phone, :website)
     end
 end
