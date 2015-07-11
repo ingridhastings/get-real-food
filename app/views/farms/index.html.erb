@@ -1,0 +1,29 @@
+<h1>Listing Farms</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Website</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @farms.each do |farm| %>
+      <tr>
+        <td><%= farm.name %></td>
+        <td><%= farm.address %></td>
+        <td><%= farm.phone %></td>
+        <td><%= farm.website %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if current_user %>
+<%= link_to 'New Farm', new_farm_path %>
+<% end %>
