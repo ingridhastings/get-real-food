@@ -1,39 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-3">
+    <h3><%= @farm.name %></h3>
+    
+    <p>
+      <strong>Address:</strong>
+      <%= @farm.address %>
+    </p>
+    
+    <p>
+      <strong>Phone:</strong>
+      <%= @farm.phone %>
+    </p>
+    
+    <p>
+      <strong>Website:</strong>
+      <%= link_to @farm.website %>
+    </p>
+    
+    <p>
+      <strong>Description:</strong>
+      <%= @farm.description %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @farm.name %>
-</p>
+    <div id="map-canvas" style="width: 230px; height: 230px;"></div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @farm.address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @farm.phone %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @farm.website %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @farm.description %>
-</p>
+  </div>
+  <div class="col-md-9">
+    <h3>Reviews by People</h3>
+</div>
 
 
 
-<%= @farm.latitude %>
-<%= @farm.longitude %>
-
-<div id="map-canvas" style="width: 230px; height: 230px;"></div>
-
-<%= link_to 'Edit', edit_farm_path(@farm) %> |
-<%= link_to 'Back', farms_path %>
 
 <script type="text/javascript">
   function initialize() {
