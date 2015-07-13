@@ -7,6 +7,8 @@ class FarmsController < ApplicationController
   end
 
   def show
+    @reviews = @farm.reviews
+    @review = Review.new
   end
 
   def new
