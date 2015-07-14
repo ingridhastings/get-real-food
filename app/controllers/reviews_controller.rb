@@ -3,8 +3,8 @@ class ReviewsController < ApplicationController
 	before_action :set_review, only: [:edit, :update, :destroy]
 
 	def edit
+		@farm = @review.farm
 	end
-
 
 	def create
 		@review = current_user.reviews.new(review_params)
@@ -18,17 +18,15 @@ class ReviewsController < ApplicationController
 		end
 	end
 
-
 	def update
 		respond_to do |format|
 			if @review.update(review_params)
-				redirect_to farm_path(@review.farm), notice: 'Review was successfully updated.'
+				format.html { redirect_to farm_path(@review.farm), notice: 'Review was successfully updated.' }
 			else
-				redirect_to farm_path(@review.farm), notice: 'Something went wrong'
+				format.html { redirect_to farm_path(@review.farm), notice: "Something went wrong" }
 			end
 		end
 	end
-
 
 	def destroy
 		@review.destroy
@@ -37,14 +35,11 @@ class ReviewsController < ApplicationController
 		end
 	end
 
-
 	private
 
-	
 	def set_review
-		@review = Review.find_by(params[:id])
+		@review = Review.find(params[:id])
 	end
-
 
 	def review_params
 		params.require(:review).permit(:content, :farm_id, :score)

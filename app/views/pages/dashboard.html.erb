@@ -1,0 +1,80 @@
+<div class="row">
+
+<!-- Profile info -->
+	<div class="col-md-2">
+	<h3><%= @user.name %></h3>
+	<%= gravatar_tag @user.email, size: 150 %>
+	</div>
+
+<!-- Farms -->
+	<div class="col-md-5">
+	<h3>My Farms</h3>
+
+	<table class="table">
+
+	<thead>
+		<tr>
+		<th>Name</th>
+		<th>Created</th>
+		<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+	<% @farms.each do |farm| %>
+
+		<tr>
+			<td><%= link_to farm.name, farm_path(farm) %></td>
+			<td><%= time_ago_in_words(farm.created_at) %> ago</td>
+			<td><%= link_to "Edit", edit_farm_path(farm) %> | <%= link_to "Destroy", farm_path(farm), method: :delete %></td>
+		</tr>
+
+	<% end %>
+
+	</tbody>
+
+	</table>
+	<%= link_to "New Farm", new_farm_path %>
+
+	</div>
+
+<!-- Reviews -->
+	<div class="col-md-5">
+		<h3>My Reviews</h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Farm</th>
+					<th>Created</th>
+					<th>Rating</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @reviews.each do |review| %>
+					<tr>
+						<td><%= link_to review.farm.name, farm_path(review.farm) %></td>
+						<td><%= time_ago_in_words(review.created_at) %> ago</td>
+						<td><div class="score_<%= review.id %>"></div></td>
+						<td><%= link_to "Edit", edit_review_path(review) %> | <%= link_to "Destroy", review_path(review), method: :delete %></td>
+					</tr>
+
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	 <% @reviews.each do |review| %>
+      $(".score_<%= review.id %>").raty({
+        starOn: "<%= image_path('star-on.png') %>",
+        starOff: "<%= image_path('star-off.png') %>",
+        score: <%= review.score %>,
+        readOnly: true
+      });
+      <% end %>
+</script>
