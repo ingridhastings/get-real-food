@@ -1,4 +1,4 @@
-<h1>Listing Farms</h1>
+<h1>Listing Farmer's Markets</h1>
 
 <table class="table">
   <thead>
@@ -7,17 +7,18 @@
       <th>Address</th>
       <th>Phone</th>
       <th>Website</th>
+      <th>Average</th>
     </tr>
   </thead>
 
   <tbody>
     <% @farms.each do |farm| %>
       <tr>
-        <td><%= farm.name %></td>
+        <td><%= link_to farm.name, farm_path(farm) %></td>
         <td><%= farm.address %></td>
         <td><%= farm.phone %></td>
         <td><%= farm.website %></td>
-
+        <td><div class="average_<%= farm.id %>"></div></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,5 +26,18 @@
 
 <br>
 <% if current_user %>
-<%= link_to 'New Farm', new_farm_path %>
+<%= link_to "New Farmer's Markets", new_farm_path %>
 <% end %>
+
+<script type="text/javascript">
+  
+  <% @farms.each do |farm| %>
+      $(".average_<%= farm.id %>").raty({
+        starOn: "<%= image_path('star-on.png') %>",
+        starOff: "<%= image_path('star-off.png') %>",
+        score: <%= farm.total_average_rating %>,
+        readOnly: true
+      });
+      <% end %>
+
+</script>
