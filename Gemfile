@@ -20,7 +20,7 @@ group :production do
 	gem 'rails_12factor'
 end
 
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails'
 gem "font-awesome-rails"
 gem 'simple_form'
 gem 'devise'
