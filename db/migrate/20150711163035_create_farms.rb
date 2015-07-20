@@ -3,8 +3,6 @@ class CreateFarms < ActiveRecord::Migration
     create_table :farms do |t|
       t.string :name
       t.string :address
-      t.text :description
-      t.string :phone
       t.string :website
       t.integer :user_id
 

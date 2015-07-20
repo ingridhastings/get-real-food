@@ -63,6 +63,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.5.2)
+    fast_seeder (0.1.0)
+      rails (~> 4.0)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     geocoder (1.2.9)
@@ -89,6 +91,10 @@ GEM
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     pg (0.18.2)
+    pg_search (1.0.4)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -181,11 +187,13 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  fast_seeder
   font-awesome-rails
   geocoder
   gravatarify (~> 3.0.0)
   jquery-rails
   pg
+  pg_search
   rails (= 4.2.3)
   rails_12factor
   rest-client

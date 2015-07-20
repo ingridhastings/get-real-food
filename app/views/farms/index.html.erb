@@ -5,8 +5,8 @@
     <tr>
       <th>Name</th>
       <th>Address</th>
-      <th>Phone</th>
       <th>Website</th>
+      <th>Schedule</th>
       <th>Average</th>
     </tr>
   </thead>
@@ -16,8 +16,8 @@
       <tr>
         <td><%= link_to farm.name, farm_path(farm) %></td>
         <td><%= farm.address %></td>
-        <td><%= farm.phone %></td>
         <td><%= farm.website %></td>
+        <td><%= farm.schedule %></td>
         <td><div class="average_<%= farm.id %>"></div></td>
       </tr>
     <% end %>

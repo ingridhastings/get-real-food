@@ -27,5 +27,6 @@ gem 'devise'
 gem 'gravatarify', '~> 3.0.0'
 gem 'geocoder'
 gem 'rest-client'
-
+gem 'pg_search'
+gem 'fast_seeder'
 

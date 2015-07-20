@@ -69,6 +69,6 @@ class FarmsController < ApplicationController
 
 
     def farm_params
-      params.require(:farm).permit(:name, :address, :description, :phone, :website)
+      params.require(:farm).permit(:name, :address, :website, :latitude, :longitude, :schedule)
     end
 end
