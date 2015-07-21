@@ -16,7 +16,8 @@ class Farm < ActiveRecord::Base
 
 	def self.search(search)
 		if search
-			where(['name ILIKE ? OR address ILIKE ?', "%#{search}%", "%#{search}%"])
+			# where(['name ILIKE ? OR address ILIKE ?', "%#{search}%", "%#{search}%"])
+			near(search)
 		else
 			all
 		end

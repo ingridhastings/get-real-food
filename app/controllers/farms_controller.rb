@@ -4,7 +4,10 @@ class FarmsController < ApplicationController
 
   def index
     @farms = Farm.search(params[:search]).page(params[:page])
-    # @farms = Farm.near(@browser_location, 100).page(params[:page])
+
+    # Use me for a big map
+    # coords = [@browser_location.latitude, @browser_location.longitude]
+    # @farms = Farm.near(coords, 100).page(params[:page])
 
     # @farms = Farm.first.nearbys.page(params[:page])
 
