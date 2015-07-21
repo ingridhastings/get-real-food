@@ -11,4 +11,4 @@ require 'json'
 
 json = JSON.parse(File.read("./db/seed.json"))
 
-Farm.create! json
+Farm.create json

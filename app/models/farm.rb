@@ -1,8 +1,9 @@
 class Farm < ActiveRecord::Base
-	validates_presence_of :name, :address, :website
+	validates_presence_of :name, :address, :latitude, :longitude
+
 
 	geocoded_by :address
-	after_validation :geocode
+	#after_validation :geocode ### You're responsible for setting your own latitude, longitude
 
 
 	has_many :reviews, dependent: :destroy
