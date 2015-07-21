@@ -5,8 +5,6 @@ class Farm < ActiveRecord::Base
 	geocoded_by :address
 	after_validation :geocode
 
-	reverse_geocoded_by :latitude, :longitude
-   	after_validation :reverse_geocode 
 
 	has_many :reviews, dependent: :destroy
 
@@ -18,7 +16,7 @@ class Farm < ActiveRecord::Base
 
 	def self.search(search)
 		if search
-			where(['name LIKE ? OR address LIKE ?', "#{search}", "#{search}"])
+			where(['name ILIKE ? OR address ILIKE ?', "%#{search}%", "%#{search}%"])
 		else
 			all
 		end

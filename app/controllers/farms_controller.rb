@@ -3,7 +3,16 @@ class FarmsController < ApplicationController
   before_action :set_farm, only: [:show, :edit, :update, :destroy]
 
   def index
-    @farms = Farm.search(params[:search]).page(params[:page])
+    # @farms = Farm.search(params[:search]).page(params[:page])
+    @farms = Farm.near(@browser_location, 100).page(params[:page])
+
+    # @farms = Farm.first.nearbys.page(params[:page])
+
+    # 1: find the nearest farm and get nearbys
+    # 2: figure out what's wrong with near
+
+    # @farms = Farm.near( "4203 Montrose, Houston TX").page(params[:page])
+
   end
 
 
