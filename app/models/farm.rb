@@ -1,6 +1,5 @@
 class Farm < ActiveRecord::Base
-	validates_presence_of :name, :address, :website, :user_id
-	belongs_to :user
+	validates_presence_of :name, :address, :website
 
 	geocoded_by :address
 	after_validation :geocode
