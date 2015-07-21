@@ -3,8 +3,8 @@ class FarmsController < ApplicationController
   before_action :set_farm, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @farms = Farm.search(params[:search]).page(params[:page])
-    @farms = Farm.near(@browser_location, 100).page(params[:page])
+    @farms = Farm.search(params[:search]).page(params[:page])
+    # @farms = Farm.near(@browser_location, 100).page(params[:page])
 
     # @farms = Farm.first.nearbys.page(params[:page])
 
