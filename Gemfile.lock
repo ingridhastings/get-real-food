@@ -63,8 +63,6 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.5.2)
-    fast_seeder (0.1.0)
-      rails (~> 4.0)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     geocoder (1.2.9)
@@ -187,7 +185,6 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
-  fast_seeder
   font-awesome-rails
   geocoder
   gravatarify (~> 3.0.0)
