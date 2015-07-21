@@ -2,9 +2,8 @@ class FarmsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_farm, only: [:show, :edit, :update, :destroy]
 
-
   def index
-    @farms = Farm.search(params[:search])
+    @farms = Farm.search(params[:search]).page(params[:page])
   end
 
 

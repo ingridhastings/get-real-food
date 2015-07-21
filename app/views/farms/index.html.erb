@@ -18,11 +18,13 @@
         <td><%= farm.address %></td>
         <td><%= farm.website %></td>
         <td><%= farm.schedule %></td>
-        <td><div class="average_<%= farm.id %>"></div></td>
+        <td nowrap="nowrap"><div class="average_<%= farm.id %>"></div></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @farms %>
 
 <br>
 <% if current_user %>
