@@ -3,12 +3,23 @@ class FarmsController < ApplicationController
   before_action :set_farm, only: [:show, :edit, :update, :destroy]
 
   def index
-    @farms = Farm.search(params[:search]).page(params[:page])
+    # 
 
     # Use me for a big map
-    # coords = [@browser_location.latitude, @browser_location.longitude]
-    # @farms = Farm.near(coords, 100).page(params[:page])
 
+    if params[:search].present?
+      @farms = Farm.search(params[:search]).page(params[:page])
+    else
+      coords = [@browser_location.latitude, @browser_location.longitude]
+      @farms = Farm.near(coords, 100).page(params[:page])
+    end
+
+    if @farms.first.present?
+      @map_coordinates = [@farms.first.latitude, @farms.first.longitude].join(",")
+    else
+      coords = [@browser_location.latitude, @browser_location.longitude]
+      @map_coordinates = coords.join(",")
+    end
     # @farms = Farm.first.nearbys.page(params[:page])
 
     # 1: find the nearest farm and get nearbys
@@ -60,6 +71,12 @@ class FarmsController < ApplicationController
     @farm.destroy
       redirect_to farms_url, notice: 'Farm was successfully destroyed.'
   end
+
+  # @farms = Farm.all
+  # @hash = Gmaps4rails.build_markers(@farms) do |farm, marker|
+  # marker.lat farm.latitude
+  # marker.lng farm.longitude
+  
 
   private
  

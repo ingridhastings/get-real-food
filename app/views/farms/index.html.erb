@@ -1,3 +1,5 @@
+ <div id="map"></div>
+
 <h1>Listing Farmer's Markets <small><%= @farms.total_count %> Farms</small></h1>
 
 <table class="table">
@@ -42,4 +44,24 @@
       });
       <% end %>
 
+</script>
+
+<script>
+$(window).ready(function() {
+
+  window.map = L.map('map');
+
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'ingridhastings.bc26c7a2',
+    accessToken: 'pk.eyJ1IjoiaW5ncmlkaGFzdGluZ3MiLCJhIjoiNDQyMGEyMWY1YTVkYTk1MGJlMzNlMDhkNTFjZmJkZGEifQ.QQFmYFRRPmjbDthM1xyHsg'
+  }).addTo(window.map);
+
+
+  window.map.setView([<%= @map_coordinates %>], 10);
+  <% @farms.each do |farm| %>
+  L.marker([<%= farm.latitude%> , <%= farm.longitude %>]).bindPopup("<b><%= farm.name %>/b>").addTo(map);
+  <% end %>
+})
 </script>
