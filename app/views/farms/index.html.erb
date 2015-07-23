@@ -9,7 +9,7 @@
       <th>Address</th>
       <th>Website</th>
       <th>Schedule</th>
-      <th>Average</th>
+      <th>Reviews</th>
     </tr>
   </thead>
 
@@ -18,7 +18,7 @@
       <tr>
         <td><%= link_to farm.name, farm_path(farm) %></td>
         <td><%= farm.address %></td>
-        <td><%= farm.website %></td>
+        <td><%= link_to farm.website, farm.website %></td>
         <td><%= farm.schedule %></td>
         <td nowrap="nowrap"><div class="average_<%= farm.id %>"></div></td>
       </tr>
