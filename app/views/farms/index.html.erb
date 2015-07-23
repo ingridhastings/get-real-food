@@ -61,7 +61,7 @@ $(window).ready(function() {
 
   window.map.setView([<%= @map_coordinates %>], 10);
   <% @farms.each do |farm| %>
-  L.marker([<%= farm.latitude%> , <%= farm.longitude %>]).bindPopup("<b><%= farm.name %>/b>").addTo(map);
+  L.marker([<%= farm.latitude%> , <%= farm.longitude %>]).bindPopup("<b><%= farm.name %></b><br/><%= farm.address %>").addTo(map);
   <% end %>
 })
 </script>
